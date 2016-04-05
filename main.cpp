@@ -7,6 +7,10 @@
 #include <iostream>
 #include <math.h>
 #include <iomanip>
+#include <unistd.h>
+#include <fstream>
+#include <string>
+
 
 
 using namespace std;
@@ -149,7 +153,7 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
 
     cout << "Please choose a calculation from the menu : " << endl;
     cout << " 1) Multiply 2 numbers by a third number and square root the answer." << endl;
-    cout << " 2) Let blank intentionally" << endl;
+    cout << " 2) Pull some information from the secret hidden file." << endl;
     cout << " 3) Let blank intentionally" << endl;
     cin >> foOption;
     cin.get();
@@ -172,7 +176,42 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
     }
     else if (foOption == 2)
     {
-        cout << "This is option 2" << endl;
+        ofstream secrethiddenfile;
+        ifstream shfread;
+
+        cout << "Breaking encryption on secret hidden file" << endl << endl;
+        sleep(2);
+
+        secrethiddenfile.open ("C:\\Users\\Owner\\ClionProjects\\JW Project P1\\secrethiddenfile.txt");
+
+            secrethiddenfile << "Your information has been recorded during the encryption breaking process." << endl;
+            secrethiddenfile << " Location: remote terminal - floor 1 - server room 2" << endl;
+            secrethiddenfile << " You cannot hide from us, you should have taken the other pill. " << endl;
+
+        secrethiddenfile.close();
+
+        shfread.open( "C:\\Users\\Owner\\ClionProjects\\JW Project P1\\secrethiddenfile.txt");
+
+        if (shfread.is_open())
+        {
+            cout << "File is open" << endl;
+            std::string strInput;
+            string totalInput;
+            shfread >> strInput;
+            while (!shfread.eof())
+            {
+                strInput.clear();
+                std::getline(shfread,strInput );
+                cout << strInput << endl;
+              totalInput += strInput;
+                shfread >> strInput;
+            }
+
+            cout << totalInput << endl << endl;
+        }
+
+
+
     }
     else if (foOption == 3)
     {
@@ -187,19 +226,19 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
 void cppMenu ()
 {
 
-    bool input;
+    int input;
 
     cout << "Please answer the question with 1 (yes) or 0 (no) : " << endl;
     cout << "Do you want to break science?" <<endl;
     cin >> input;
     cin.get();
 
-    if (input == true)
+    if (input == 1)
     {
         cout << "Good going Peasant, now you broke science!" << endl;
         cout << "Try again" << endl;
     }
-    else if ( input == false)
+    else if ( input == 0)
     {
         cout << "Good job at not breaking science. Now go do something productive." << endl;
     }
