@@ -76,19 +76,26 @@ void menu()  //The main menu function
 
 void greenEnergyMenu () //The Green Energy Menu Function
 {
+    //Option 1 variables
     int option;
     double gevariable1;
-    double gevariable2;
-    double gevariable3;
+    float gevariable2;
+    int gevariable3;
     double getotal;
+
+    //Option 2 variables
+    int guess;
+    int guess2;
+/*  int answer;
+    int answer2;*/
 
     cout << "Please choose a calculation from the menu : " << endl;
     cout << " 1) Add two numbers, the second to a power :" << endl;
-    cout << " 2) GE" << endl;
-    cout << " 3) GE" << endl;
+    cout << " 2) Guessing Game" << endl;
+    cout << " 3) Left blank intentionally" << endl;
     cin >> option;
 
-    if (option == 1)
+    if (option == 1) //sub-sub-menu for GE question 1
     {
         cout << "What is the first number : " << endl;
         cin >> gevariable1;
@@ -97,14 +104,28 @@ void greenEnergyMenu () //The Green Energy Menu Function
         cout << "What power is it raised to : " << endl;
         cin >> gevariable3;
 
-        getotal = gevariable1 + pow(1 + gevariable2, gevariable3);
+        getotal = gevariable1 + pow(1 + gevariable2, gevariable3); //Fun math stuffs
 
         cout << "The Total of that calculation is : " << getotal << endl;
         cin.get();
     }
     else if (option == 2)
     {
-        cout << "This is option 2" << endl;
+        cout << "Pick a number between 1 and 3:" << endl;
+        cin >> guess;
+        cout << "Now choose a number between 2 and 4:" << endl;
+        cin >> guess2;
+        cin.get();
+
+        if ( guess == 2 && guess2 == 3)
+        {
+            cout << "Good Job! You can read." << endl;
+        }
+        else if ( guess != 2 || guess2 != 3)
+        {
+            cout << "Try again doofey!" << endl;
+        }
+
     }
     else if (option == 3)
     {
@@ -118,6 +139,7 @@ void greenEnergyMenu () //The Green Energy Menu Function
 
 void fiberOpticsMenu () //The Fiber Optics Menu Function
 {
+    //Variables for Option 1
     int foOption;
     double foVariable1;
     double foVariable2;
@@ -127,8 +149,8 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
 
     cout << "Please choose a calculation from the menu : " << endl;
     cout << " 1) Multiply 2 numbers by a third number and square root the answer." << endl;
-    cout << " 2) FO" << endl;
-    cout << " 3) FO" << endl;
+    cout << " 2) Let blank intentionally" << endl;
+    cout << " 3) Let blank intentionally" << endl;
     cin >> foOption;
     cin.get();
 
@@ -167,18 +189,29 @@ void cppMenu ()
 
     bool input;
 
-    cout << "Please answer the question with yes or no : " << endl;
+    cout << "Please answer the question with 1 (yes) or 0 (no) : " << endl;
     cout << "Do you want to break science?" <<endl;
     cin >> input;
+    cin.get();
 
     if (input == true)
     {
         cout << "Good going Peasant, now you broke science!" << endl;
         cout << "Try again" << endl;
     }
-    else
+    else if ( input == false)
     {
         cout << "Good job at not breaking science. Now go do something productive." << endl;
     }
-    cin.get();
 }
+
+
+/*
+if ( y == 10)
+{
+x = 0;
+}
+else
+{
+x = 1;
+}*/
