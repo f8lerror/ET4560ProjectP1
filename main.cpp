@@ -204,14 +204,3 @@ void cppMenu ()
         cout << "Good job at not breaking science. Now go do something productive." << endl;
     }
 }
-
-
-/*
-if ( y == 10)
-{
-x = 0;
-}
-else
-{
-x = 1;
-}*/
