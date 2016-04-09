@@ -9,7 +9,6 @@
 #include <iomanip>
 #include <unistd.h>
 #include <fstream>
-#include <string>
 
 
 
@@ -30,8 +29,8 @@ int main()
 
     cout << fixed << showpoint << setprecision(1);   //Makes sure peasants don't try to use a decimal choice
 
-    welcomeMessage(); //Display the welcome message
-    menu(); //show the menu
+    welcomeMessage();                               //Display the welcome message
+    menu();                                         //show the menu
     cin >> mainOption;
 
     if (mainOption == 1)
@@ -64,12 +63,12 @@ int main()
 
 }
 
-void welcomeMessage()  //The welcome message function
+void welcomeMessage()                                           //The welcome message function
 {
     cout << "Greetings Peasants...I mean Students. Please choose a class from the menu." << endl;
 }
 
-void menu()  //The main menu function
+void menu()                                                     //The main menu function
 {
     cout << " Please select an option : " << endl;
     cout << " 1) Green Energy" << endl;
@@ -78,7 +77,7 @@ void menu()  //The main menu function
     cout << " 4) Quit!" << endl << endl;
 }
 
-void greenEnergyMenu () //The Green Energy Menu Function
+void greenEnergyMenu ()                                         //The Green Energy Menu Function
 {
     //Option 1 variables
     int option;
@@ -99,7 +98,7 @@ void greenEnergyMenu () //The Green Energy Menu Function
     cout << " 3) Left blank intentionally" << endl;
     cin >> option;
 
-    if (option == 1) //sub-sub-menu for GE question 1
+    if (option == 1)                                                    //sub-sub-menu for GE question 1
     {
         cout << "What is the first number : " << endl;
         cin >> gevariable1;
@@ -108,7 +107,7 @@ void greenEnergyMenu () //The Green Energy Menu Function
         cout << "What power is it raised to : " << endl;
         cin >> gevariable3;
 
-        getotal = gevariable1 + pow(1 + gevariable2, gevariable3); //Fun math stuffs
+        getotal = gevariable1 + pow(1 + gevariable2, gevariable3);      //Fun math stuffs
 
         cout << "The Total of that calculation is : " << getotal << endl;
         cin.get();
@@ -141,7 +140,7 @@ void greenEnergyMenu () //The Green Energy Menu Function
     }
 }
 
-void fiberOpticsMenu () //The Fiber Optics Menu Function
+void fiberOpticsMenu ()                                                     //The Fiber Optics Menu Function
 {
     //Variables for Option 1
     int foOption;
@@ -150,6 +149,7 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
     double foVariable3;
     double foVariable4;
     double foTotal;
+
 
     cout << "Please choose a calculation from the menu : " << endl;
     cout << " 1) Multiply 2 numbers by a third number and square root the answer." << endl;
@@ -176,42 +176,50 @@ void fiberOpticsMenu () //The Fiber Optics Menu Function
     }
     else if (foOption == 2)
     {
-        ofstream secrethiddenfile;
-        ifstream shfread;
+        ofstream outputfile;                                                            // variable for output file being created and saved
+        ifstream inputfile;                                                             // variable for reading the information from the output file
 
-        cout << "Breaking encryption on secret hidden file" << endl << endl;
+        string textToSave;
+        string totalOutput;
+        string readText;
+
+        textToSave = "Your information has been recorded during the encryption breaking process.\nLocation: remote terminal #3 - floor 1 - server room 2\nYou cannot hide from us, you should have taken the other pill.\n\n";
+
+        cout << "Breaking encryption on secret hidden file \n\n" << endl;
+        sleep(1);                                                                       //Sleep function, tells the program to wait for X seconds then continue.
+        cout << "**** (25%)" << endl;
         sleep(2);
+        cout << "******** (50%)" << endl;
+        sleep(2);
+        cout << "************ (75%)" << endl;
+        sleep(2);
+        cout << "**************** (100%)" << endl;
+        sleep(5);
+        cout << "Recovering contents of file please wait.\n\n" << endl;
+        sleep(3);
 
-        secrethiddenfile.open ("C:\\Users\\Owner\\ClionProjects\\JW Project P1\\secrethiddenfile.txt");
+        outputfile.open ("C:\\Users\\Owner\\ClionProjects\\JW Project P1\\outputfile.txt");             // Open the output file
 
-            secrethiddenfile << "Your information has been recorded during the encryption breaking process." << endl;
-            secrethiddenfile << " Location: remote terminal - floor 1 - server room 2" << endl;
-            secrethiddenfile << " You cannot hide from us, you should have taken the other pill. " << endl;
-
-        secrethiddenfile.close();
-
-        shfread.open( "C:\\Users\\Owner\\ClionProjects\\JW Project P1\\secrethiddenfile.txt");
-
-        if (shfread.is_open())
+        if (outputfile.is_open())                                                                       // Check if the output file is open
         {
-            cout << "File is open" << endl;
-            std::string strInput;
-            string totalInput;
-            shfread >> strInput;
-            while (!shfread.eof())
-            {
-                strInput.clear();
-                std::getline(shfread,strInput );
-                cout << strInput << endl;
-              totalInput += strInput;
-                shfread >> strInput;
-            }
-
-            cout << totalInput << endl << endl;
+            outputfile << textToSave;                                                                   // If the output file has been opened then write the variable information to the file
         }
+        outputfile.close();                                                                             // Close the output file
 
+        sleep(3);
 
+        inputfile.open( "C:\\Users\\Owner\\ClionProjects\\JW Project P1\\outputfile.txt");              // Open the outputfile
+        if (inputfile.is_open())
+        {
+            while (getline(inputfile, totalOutput))                                                     // Do stuff while the output file is open
+            {
 
+                readText += totalOutput + "\n";                                                         // Read the contents of the output file and verify it is there
+            }
+            inputfile.close();                                                                          // Close the file
+            cout << readText << endl;                                                                   // Print the contents of the file to the screen
+
+        }
     }
     else if (foOption == 3)
     {
